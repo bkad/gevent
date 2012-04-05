@@ -457,7 +457,10 @@ class WSGIHandler(object):
     def log_request(self):
         log = self.server.log
         if log:
-            log.write(self.format_request() + '\n')
+            if hasattr(log, "info"):
+                log.info(self.format_request() + '\n')
+            else:
+                log.write(self.format_request() + '\n')
 
     def format_request(self):
         now = datetime.now().replace(microsecond=0)
