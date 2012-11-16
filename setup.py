@@ -277,7 +277,6 @@ def link(source, dest):
 class BuildFailed(Exception):
     pass
 
-
 def read(name, *args):
     try:
         return open(join(dirname(__file__), name)).read(*args)
@@ -287,13 +286,13 @@ def read(name, *args):
 
 def run_setup(ext_modules):
     setup(
-        name='gevent',
+        name='prat-gevent',
         version=__version__,
-        description='Coroutine-based network library',
+        description="Prat fork of Denis Beilenko's Coroutine-based network library",
         long_description=read('README.rst'),
-        author='Denis Bilenko',
-        author_email='denis.bilenko@gmail.com',
-        url='http://www.gevent.org/',
+        author='Kevin Le',
+        author_email='solnovus@gmail.com',
+        url='https://github.com/bkad/gevent',
         packages=['gevent'],
         ext_modules=ext_modules,
         cmdclass=dict(build_ext=my_build_ext, sdist=sdist),
